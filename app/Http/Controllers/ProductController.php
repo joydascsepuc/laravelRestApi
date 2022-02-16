@@ -19,7 +19,7 @@ class ProductController extends Controller
     {
         // return ProductCollection::collection(Product::all());
         // return new ProductCollection(Product::all());
-        return ProductCollection::collection(Product::all());
+        return ProductCollection::collection(Product::paginate(20));
     }
 
     /**
