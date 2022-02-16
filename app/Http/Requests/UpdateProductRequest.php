@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateProductRequest extends FormRequest
@@ -13,7 +15,7 @@ class UpdateProductRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +26,12 @@ class UpdateProductRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            // 'name' => ['required','max:255',Rule::unique('products')->ignore($this->route('id'))], // This is not working
+            'name' => 'required|max:255',
+            'description' => 'required',
+            'price' => 'required | max:10',
+            'stock' => 'required | max:6',
+            'discount' => 'required | max:2',
         ];
     }
 }

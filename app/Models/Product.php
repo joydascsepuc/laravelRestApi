@@ -10,7 +10,7 @@ class Product extends Model
 {
     use HasFactory;
 
-    // protected $guarded = ['id'];
+    protected $guarded = ['id'];
 
     public function reviews() {
         return $this->hasMany(Review::class);
